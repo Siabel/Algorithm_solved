@@ -3,7 +3,7 @@ price_lst = []
 
 for _ in range(n):
     a,b,c = map(int, input().split())
-    if a == b and a == c and b == c:
+    if a == b == c:
         s = 10000 + a * 1000
     elif a != b and a != c and b != c:
         s = max(a,b,c) * 100
