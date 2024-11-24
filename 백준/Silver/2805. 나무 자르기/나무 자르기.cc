@@ -1,37 +1,46 @@
 #include <iostream>
 #include <vector>
 #include <algorithm>
-
 using namespace std;
 
-int n,m;
-vector<int> tree;
-
 int main() {
-    cin >> n >> m;
+  ios_base::sync_with_stdio(false); 
+  cin.tie(NULL); cout.tie(NULL);
 
-    for(auto i =0; i<n;i++) {
-        int x;
-        cin >> x;
-        tree.push_back(x);
-    }
+  int n, h, m;
+  vector<int> tree;
 
-    int start =0;
-    int end= *max_element(tree.begin(),tree.end());
-    int result=0;
+  cin >> n >> m;
 
-    while(start<=end) {
-        long long int total = 0;
-        int mid = (start+end) / 2;
-        for(auto i =0; i<n;i++) {
-            if (tree[i]>mid) total += tree[i] - mid;
-        }
-        if(total<m) {
-            end = mid -1;
-        } else {
-            result = mid;
-            start = mid +1;
-        }
-    }
-    cout << result;
+  for(int i = 0; i < n; i++){
+    cin >> h;
+    tree.push_back(h);
+  }
+
+  sort(tree.begin(), tree.end());
+
+  long long start = 0;
+  long long end = *max_element(tree.begin(), tree.end());
+  int res = 0;
+
+  while(start <= end){
+    long long cnt = 0;
+    int mid = (start + end) / 2;
+
+    for(int i = 0; i < n; i++) {
+      if(tree[i] - mid > 0) 
+        cnt += tree[i] - mid;
+      }
+      
+      if(cnt >= m){
+        res = mid;
+        start = mid + 1;
+      } 
+      else{
+        end = mid - 1;
+      }
+  }
+
+  cout << res;
+  return 0;
 }
