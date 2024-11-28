@@ -16,20 +16,20 @@ void init() {
   }
 }
 
-bool check(int x, int y, int player, int& startX, int& startY) {
+bool check(int x, int y, int color, int& startX, int& startY) {
   for (int d = 0; d < 4; d++) {
     int cnt = 1;
     int nx = x + dx[d], ny = y + dy[d];
     int sx = x, sy = y;
 
-    while (nx >= 0 && ny >= 0 && nx < 19 && ny < 19 && board[nx][ny] == player) {
+    while (nx >= 0 && ny >= 0 && nx < 19 && ny < 19 && board[nx][ny] == color) {
       cnt++;
       nx += dx[d];
       ny += dy[d];
     }
 
     nx = x - dx[d], ny = y - dy[d];
-    while (nx >= 0 && ny >= 0 && nx < 19 && ny < 19 && board[nx][ny] == player) {
+    while (nx >= 0 && ny >= 0 && nx < 19 && ny < 19 && board[nx][ny] == color) {
       sx = nx;
       sy = ny;
       cnt++;
@@ -58,7 +58,7 @@ void dfs() {
       }
     }
   }
-  cout << 0 << endl;
+  cout << 0;
 }
 
 int main() {
