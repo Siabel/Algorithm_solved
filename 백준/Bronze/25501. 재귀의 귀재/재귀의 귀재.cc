@@ -14,7 +14,7 @@ void init(){
 }
 
 int recursion(string &s, int l, int r){ 
-  ::cnt++;
+  cnt++;
   if(l >= r) return 1;
   else if(s[l] != s[r]) return 0;
   else return recursion(s, l+1, r-1);
@@ -26,10 +26,10 @@ int isPalindrome(string &s){
 
 int main(){
   init();
-  
+
   while (n--) {
-    ::cnt = 0;
+    cnt = 0;
     cin >> temp;
-    cout << isPalindrome(temp) << " " << ::cnt << '\n';
+    cout << isPalindrome(temp) << " " << cnt << "\n";
   }
 }
